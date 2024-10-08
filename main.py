@@ -1,8 +1,16 @@
-# 1st program
-print(9**0.5 * 5)
-# 2nd program
-print(9.99>9.98 and 1000!=1000.1)
-#3rd program
-print(2*2+2 == 2*2 and 2+2)
-#4th program
-print(int(float('123.456')*10)%10)
+def send_email(message, recipient,  *,sender = "university.help@gmail.com"):
+    if ('@' and ".com" or ".ru" or ".net") not in recipient and ('@' and ".com" or ".ru" or ".net") not in sender:
+        print( "Невозможно отправить письмо с адреса <sender> на адрес <recipient>")
+        if sender == recipient:
+            print("Нельзя отправить письмо самому себе!")
+        if sender == "university.help@gmail.com":
+            print("Письмо успешно отправлено с адреса <sender> на адрес <recipient>.")
+        else:
+            print("НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса <sender> на адрес <recipient>.")
+send_email('Это сообщение для проверки связи', 'vasyok1337@gmail.com')
+send_email('Вы видите это сообщение как лучший студент курса!', 'urban.fan@mail.ru', sender='urban.info@gmail.com')
+send_email('Пожалуйста, исправьте задание', 'urban.student@mail.ru', sender='urban.teacher@mail.uk')
+send_email('Напоминаю самому себе о вебинаре', 'urban.teacher@mail.ru', sender='urban.teacher@mail.ru')
+
+
+
