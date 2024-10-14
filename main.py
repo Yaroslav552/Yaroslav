@@ -1,18 +1,12 @@
+def single_root_words(root_word, *other_words):
+    same_words = []
+    for i in other_words:
+        if root_word.lower() in i.lower() or i.lower() in root_word.lower():
+            same_words.append(i)
+    return same_words
 
-def print_params(a = 1, b = 'строка', c = True):
-    print(a, b, c)
-
-
-print_params(a=25, b='хи - хи', c=False)
-print_params()
-print_params(b = 25)
-print_params(c = [1,2,3])
-values_list = [1, 'у меня др', False]
-values_dict = {'a': 5, 'b': 'cg go', 'c': True}
-values_list_2 = [54.32, 'Строка' ]
-print_params(*values_list_2, 42)
-print_params(*values_list)
-print_params(**values_dict)
-
-
+result1 = single_root_words('rich', 'richiest', 'orichalcum', 'cheers', 'richies')
+result2 = single_root_words('Disablement', 'Able', 'Mable', 'Disable', 'Bagel')
+print(result1)
+print(result2)
 
