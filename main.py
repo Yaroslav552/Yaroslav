@@ -1,16 +1,33 @@
-def get_multiplied_digits(number):
-    str_number = str(number)
-    first = int(str_number[0])
-    if len(str_number) == 1:
-        return first
-    else:
-        return first * get_multiplied_digits(int(str_number[1:]))
+data_structure = [
+    [1, 2, 3],
+    {'a': 4, 'b': 5},
+    (6, {'cube': 7, 'drum': 8}),
+    "Hello", ((), [{(2, 'Urban', ('Urban2', 35))}])
+]
+
+def calculate_structure_sum(data_structure):
+    sum_numbers = 0
+    sum_strings = 0
 
 
-result = get_multiplied_digits(40203)
+    def recurse(data):
+        nonlocal sum_numbers, sum_strings
+        if isinstance(data, list) or isinstance(data, tuple) or isinstance(data, set):
+            for item in data:
+                recurse(item)
+        elif isinstance(data, dict):
+            for value in data.values():
+                recurse(value)
+            for key in data.keys():
+                recurse(key)
+        elif isinstance(data, int) or isinstance(data, str):
+            if isinstance(data, int):
+                sum_numbers += data
+            elif isinstance(data, str):
+                sum_strings += len(data)
+
+    recurse(data_structure)
+    return sum_numbers + sum_strings
+
+result = calculate_structure_sum(data_structure)
 print(result)
-
-
-
-
-
